@@ -1,0 +1,49 @@
+1 - ARQUIVOS ALTERADOS
+    zookeeper.properties
+    server.properties
+--------------------------------------------------------------------------------------------------------------------------
+2 - INICIAR ZOOKEEPER:
+    zookeeper-server-start.sh /home/klayrocha/Klay/CursoKafkaIniciantes/kafka/config/zookeeper.properties
+--------------------------------------------------------------------------------------------------------------------------
+3 - INICIAR KAFKA:
+    kafka-server-start.sh /home/klayrocha/Klay/CursoKafkaIniciantes/kafka/config/server.properties
+--------------------------------------------------------------------------------------------------------------------------
+4 - LISTAR TÓPICOS NO KAFKA
+    kafka-topics.sh --bootstrap-server localhost:9092 --list
+--------------------------------------------------------------------------------------------------------------------------
+5 - CRIAR UM TÓPICO
+    kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test
+--------------------------------------------------------------------------------------------------------------------------
+6 - ENVIAR PRODUZIR MENSAGEM EM UM TÓPICO
+    kafka-console-producer.sh --broker-list localhost:9092 --topic test
+--------------------------------------------------------------------------------------------------------------------------
+7 - LER CONSUMIR MENSAGEM EM UM TÓPICO
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
+--------------------------------------------------------------------------------------------------------------------------
+8 - LER CONSUMIR MENSAGEM EM UM TÓPICO DESDE O INICIO
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+--------------------------------------------------------------------------------------------------------------------------
+9 - LER CONSUMIR MENSAGEM EM UM TÓPICO, COM GRUPO 
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --group grupo1
+--------------------------------------------------------------------------------------------------------------------------
+10 - DESCRIÇÃO DO TÓPICO CRIADO
+     kafka-topics.sh --bootstrap-server localhost:9092 --topic test --describe
+--------------------------------------------------------------------------------------------------------------------------
+11 - ALTERAR TÓPICO CRIADO (ACRESCENTAR PARTIÇÕES)
+     kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic test --partitions 10
+--------------------------------------------------------------------------------------------------------------------------
+12 - EXCLUIR TÓPICO CRIADO
+     kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic test
+--------------------------------------------------------------------------------------------------------------------------
+13 - ENVIAR PRODUZIR MENSAGEM EM UM TÓPICO (MENSAGEM COM CHAVE E VALOR)
+    kafka-console-producer.sh --broker-list localhost:9092 --topic test --property parse.key=true --property key.separator=,
+--------------------------------------------------------------------------------------------------------------------------
+14 - LER CONSUMIR MENSAGEM EM UM TÓPICO, COM GRUPO  (MENSAGEM COM CHAVE E VALOR)
+    kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --property parse.key=true --property key.separator=, --group grupo1
+
+--------------------------------------------------------------------------------------------------------------------------
+15 - LISTAR OS GRUPOS
+    kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+--------------------------------------------------------------------------------------------------------------------------
+15 - STATUS DO GRUPO
+    kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group processing-group
